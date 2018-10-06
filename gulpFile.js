@@ -3,6 +3,8 @@
 // npm install --save-dev gulp 
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
+const uglify = require('gulp-uglify');
+
 
 /*
 -- TOP LEVEL FUNCTIONS --
@@ -31,6 +33,15 @@ gulp.task('imageMin', function () {
     gulp.src('src/img/*')
         .pipe(imagemin())
         .pipe(gulp.dest('dist/img/'));
+});
+
+
+// Minify Javescript Code
+// npm install --save-dev gulp-uglify
+gulp.task('minify', function () {
+    gulp.src('src/js/*')
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'));
 });
 
 // set to default, so in Terminal you can just type 'gulp' to run the task
