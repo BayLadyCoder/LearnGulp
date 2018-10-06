@@ -8,16 +8,19 @@ gulp.dest - Point to the folder output (destination)
 gulp.watch - Watch files and folders for change
 */
 
-// Logs Message
+// Logs Message. In Terminal, type 'gulp message' to run the task
 gulp.task('message', function () {
     return console.log("Gulp is running...");
 });
 
 
-gulp.task('default', function () {
-    return console.log('Gulp is running...2');
+// Copy ALL HTML files, to run this task, type 'gulp copyHtml' in Terminal
+gulp.task('copyHtml', function () {
+    gulp.src('src/*.html')
+        .pipe(gulp.dest('dist'));
 });
 
-gulp.task('copyHtml', function () {
-
+// set to default, so in Terminal you can just type 'gulp' to run the task
+gulp.task('default', function () {
+    return console.log('Gulp is running...2');
 });
