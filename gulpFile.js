@@ -1,4 +1,8 @@
+// sudo npm install -g gulp
+// npm init
+// npm install --save-dev gulp 
 const gulp = require('gulp');
+const imagemin = require('gulp-imagemin');
 
 /*
 -- TOP LEVEL FUNCTIONS --
@@ -18,6 +22,15 @@ gulp.task('message', function () {
 gulp.task('copyHtml', function () {
     gulp.src('src/*.html')
         .pipe(gulp.dest('dist'));
+});
+
+
+// Optimize Images
+// npm install --save-dev gulp-imagemin (in Terminal)
+gulp.task('imageMin', function () {
+    gulp.src('src/img/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/img/'));
 });
 
 // set to default, so in Terminal you can just type 'gulp' to run the task
