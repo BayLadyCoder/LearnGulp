@@ -17,3 +17,7 @@ gulp.task('message', function () {
 gulp.task('default', function () {
     return console.log('Gulp is running...2');
 });
+
+gulp.task('copyHtml', function () {
+
+});
