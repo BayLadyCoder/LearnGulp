@@ -4,6 +4,7 @@
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const uglify = require('gulp-uglify');
+const sass = require('gulp-sass');
 
 
 /*
@@ -43,6 +44,17 @@ gulp.task('minify', function () {
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 });
+
+
+// Compile Sass
+// npm install --save-dev gulp-sass
+gulp.task('sass', function () {
+    gulp.src('src/sass/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('dist/css'));
+});
+
+
 
 // set to default, so in Terminal you can just type 'gulp' to run the task
 gulp.task('default', function () {
