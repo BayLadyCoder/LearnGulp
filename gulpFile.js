@@ -5,6 +5,7 @@ const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const uglify = require('gulp-uglify');
 const sass = require('gulp-sass');
+const concat = require('gulp-concat');
 
 /*
 -- TOP LEVEL FUNCTIONS --
@@ -38,11 +39,11 @@ gulp.task('imageMin', function () {
 
 // Minify Javescript Code
 // npm install --save-dev gulp-uglify
-gulp.task('minify', function () {
-    gulp.src('src/js/*')
-        .pipe(uglify())
-        .pipe(gulp.dest('dist/js'));
-});
+// gulp.task('minify', function () {
+//     gulp.src('src/js/*')
+//         .pipe(uglify())
+//         .pipe(gulp.dest('dist/js'));
+// });
 
 
 // Compile Sass
@@ -53,6 +54,15 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('dist/css'));
 });
 
+// Concatination, combine javascript files
+// Scripts = concat all js files to main.js and minify it
+// npm install --save-dev gulp-concat
+gulp.task('scripts', function () {
+    gulp.src('src/js/*.js')
+        .pipe(concat('main.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'));
+});
 
 // set to default, so in Terminal you can just type 'gulp' to run the task
-gulp.task('default', ['message', 'copyHtml', 'imageMin', 'minify', 'sass']);
+gulp.task('default', ['message', 'copyHtml', 'imageMin', 'sass', 'scripts']);
