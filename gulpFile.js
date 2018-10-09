@@ -6,7 +6,6 @@ const imagemin = require('gulp-imagemin');
 const uglify = require('gulp-uglify');
 const sass = require('gulp-sass');
 
-
 /*
 -- TOP LEVEL FUNCTIONS --
 gulp.task - Define tasks
@@ -55,8 +54,5 @@ gulp.task('sass', function () {
 });
 
 
-
 // set to default, so in Terminal you can just type 'gulp' to run the task
-gulp.task('default', function () {
-    return console.log('Gulp is running...2');
-});
+gulp.task('default', ['message', 'copyHtml', 'imageMin', 'minify', 'sass']);
