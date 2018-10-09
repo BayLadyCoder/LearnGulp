@@ -64,5 +64,15 @@ gulp.task('scripts', function () {
         .pipe(gulp.dest('dist/js'));
 });
 
+
+// Watch changing of each file
+// when something is changed when the file is saved, run this following task
+gulp.task('watch', function () {
+    gulp.watch('src/js/*.js', ['scripts']);
+    gulp.watch('src/img', ['imageMin']);
+    gulp.watch('src/sass/*.scss', ['sass']);
+    gulp.watch('src/*.html', ['copyHtml']);
+});
+
 // set to default, so in Terminal you can just type 'gulp' to run the task
 gulp.task('default', ['message', 'copyHtml', 'imageMin', 'sass', 'scripts']);
